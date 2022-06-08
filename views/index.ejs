@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Enter a character name below to add to the database</h1>
+
+
+
+    <ul class="characters">
+        <% for(let i=0; i < info.length; i++) {%>
+        <li class="character">
+            <span><%= info[i].charName %></span>
+            <span><%= info[i].charClass %></span>
+        </li>
+        <% } %>
+    </ul>
+
+    <h2>Add a Character:</h2>
+
+
+    <form action="/addCharacter" method="POST">
+        <label for="charName">Character Name</label>
+        <input type="text" name="charName" placeholder="Enter name">
+        <label for="charClass">Character Class</label>
+        <input type="text" name="charClass" placeholder="Enter class">
+        <button>Submit</button>
+    </form>
+
+</body>
+<script src="main.js"></script>
+
+</html>

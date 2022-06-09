@@ -1,0 +1,32 @@
+
+
+h1{
+    color: green;
+}
+
+li{
+    font-weight: bold;
+}
+
+button{
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.formStyle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px   ;
+}
+
+.charNameInputContainer,
+.charClassInputContainer {
+    display: flex;
+    flex-direction: column;
+}

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -16,25 +17,33 @@
 
     <ul class="characters">
         <% for(let i=0; i < info.length; i++) {%>
-        <li class="character">
-            <span><%= info[i].charName %></span>
-            <span><%= info[i].charClass %></span>
-        </li>
-        <% } %>
+            <li class="character">
+                <span>
+                    <%= info[i].charName %>
+                </span> -
+                <span>
+                    <%= info[i].charClass %>
+                </span>
+            </li>
+            <% } %>
     </ul>
 
     <h2>Add a Character:</h2>
 
 
-    <form action="/addCharacter" method="POST">
-        <label for="charName">Character Name</label>
-        <input type="text" name="charName" placeholder="Enter name">
-        <label for="charClass">Character Class</label>
-        <input type="text" name="charClass" placeholder="Enter class">
-        <button>Submit</button>
+    <form class="formStyle" action="/addCharacter" method="POST">
+        <div class="charNameInputContainer">
+            <label for="charName">Character Name</label>
+            <input id="charNameInput" type="text" name="charName" placeholder="Enter name">
+        </div>
+        <div class="charClassInputContainer">
+            <label for="charClass">Character Class</label>
+            <input id="charClassInput" type="text" name="charClass" placeholder="Enter class">
+        </div>
+        <button id="submitCharacter">Submit</button>
     </form>
 
 </body>
-<script src="main.js"></script>
+<script src="js/main.js"></script>
 
 </html>

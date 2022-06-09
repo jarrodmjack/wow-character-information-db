@@ -11,12 +11,15 @@ MongoClient.connect('mongodb+srv://jarrodj:jarrodj@cluster0.yvouwuv.mongodb.net/
         console.log('Connected to database');
         const db = client.db('wow-character-data')
         const characterCollection = db.collection('characters')
-        app.set('view engine', 'ejs')
+        app.set('view engine', 'ejs') //renders the index.ejs inside of the views folder
         app.use(express.urlencoded({extended: true}))
         app.use(express.json())
+        app.use(express.static('public')) // --->  any js/css files in the public folder will be automatically rendered
+        
         // app.engine('html', require('ejs').renderFile);
         // app.set('view engine', 'html');
-        app.engine('ejs', require('ejs').__express);
+        
+        app.engine('ejs', require('ejs').__express); 
 
 
         app.get('/', (req, res) => {
@@ -31,8 +34,14 @@ MongoClient.connect('mongodb+srv://jarrodj:jarrodj@cluster0.yvouwuv.mongodb.net/
         app.post('/addCharacter', (req, res) => {
             db.collection('characters').insertOne({charName: req.body.charName, charClass: req.body.charClass})
             .then(result => {
-                console.log('Character added')
-                res.redirect('/')
+                if(!req.body.charName || !req.body.charClass){ //check if fields are empty
+                   console.log('one or more of the fields is empty')
+                    res.send('one or more of the fields is empty')
+                }else{
+                    console.log('Character added')
+                    res.redirect('/')
+                }
+               
             })
             .catch(error => console.error(error))
         })
